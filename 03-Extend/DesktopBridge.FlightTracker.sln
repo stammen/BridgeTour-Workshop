@@ -8,6 +8,11 @@ EndProject
 Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "DesktopBridge.FlightTracker.Package", "DesktopBridge.FlightTracker.Package\DesktopBridge.FlightTracker.Package.jsproj", "{AD8F83E7-C68A-43C7-90F3-A66CDDE6B623}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopBridge.FlightTracker.Debug", "DesktopBridge.FlightTracker.Debug\DesktopBridge.FlightTracker.Debug.vsdproj", "{DD9558A5-C4E0-4931-8245-54157B91C429}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4A99550C-3241-4F7A-9D8D-108CDA720EF5} = {4A99550C-3241-4F7A-9D8D-108CDA720EF5}
+		{44F2D0D5-1654-499C-A204-3C5A7C767D29} = {44F2D0D5-1654-499C-A204-3C5A7C767D29}
+		{AD8F83E7-C68A-43C7-90F3-A66CDDE6B623} = {AD8F83E7-C68A-43C7-90F3-A66CDDE6B623}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopBridge.FlightTracker.Notification", "DesktopBridge.FlightTracker.Notification\DesktopBridge.FlightTracker.Notification.csproj", "{4A99550C-3241-4F7A-9D8D-108CDA720EF5}"
 EndProject
