@@ -53,7 +53,7 @@ namespace DesktopBridge.FlightTracker
             progressBar.Visible = true;
 
             // Simulate a high load process
-            await Task.Delay(5 * 1000);
+            await Task.Delay(1000);
 
             string userPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
             string fileName = $"{userPath}\\BoardingPass.txt";

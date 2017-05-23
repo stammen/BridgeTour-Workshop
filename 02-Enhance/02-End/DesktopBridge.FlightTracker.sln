@@ -1,13 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.3
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopBridge.FlightTracker", "DesktopBridge.FlightTracker\DesktopBridge.FlightTracker.csproj", "{44F2D0D5-1654-499C-A204-3C5A7C767D29}"
 EndProject
 Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "DesktopBridge.FlightTracker.Package", "DesktopBridge.FlightTracker.Package\DesktopBridge.FlightTracker.Package.jsproj", "{AD8F83E7-C68A-43C7-90F3-A66CDDE6B623}"
 EndProject
-Project("{365BE41E-7993-430D-A5E6-1381A54BC077}") = "DesktopBridge.FlightTracker.Debug", "DesktopBridge.FlightTracker.Debug\DesktopBridge.FlightTracker.Debug.vsdproj", "{DD9558A5-C4E0-4931-8245-54157B91C429}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopBridge.FlightTracker.Debug", "DesktopBridge.FlightTracker.Debug\DesktopBridge.FlightTracker.Debug.vsdproj", "{DD9558A5-C4E0-4931-8245-54157B91C429}"
+	ProjectSection(ProjectDependencies) = postProject
+		{44F2D0D5-1654-499C-A204-3C5A7C767D29} = {44F2D0D5-1654-499C-A204-3C5A7C767D29}
+		{AD8F83E7-C68A-43C7-90F3-A66CDDE6B623} = {AD8F83E7-C68A-43C7-90F3-A66CDDE6B623}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

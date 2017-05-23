@@ -119,8 +119,15 @@
       <TargetUWP>..\DesktopBridge.FlightTracker.Package\win32\</TargetUWP>
     </PropertyGroup>
     <ItemGroup>
-      <Win32Binaries Include="$(TargetDir)\*" />
+      <DesktopBinaries Include="$(TargetDir)\**\*.*" />
+      <ExcludeFilters Include="$(TargetDir)\**\*.winmd" />
     </ItemGroup>
-    <Copy SourceFiles="@(Win32Binaries)" DestinationFolder="$(TargetUWP)" />
+    <ItemGroup>
+      <DesktopBinaries Include="$(TargetDir)\**\*.*" />
+    </ItemGroup>
+    <ItemGroup>
+      <DesktopBinaries Remove="@(ExcludeFilters)" />
+    </ItemGroup>
+    <Copy SourceFiles="@(DesktopBinaries)" DestinationFiles="@(DesktopBinaries->'$(TargetUWP)\%(RecursiveDir)%(Filename)%(Extension)')" />
   </Target>
 </Project>
