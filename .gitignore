@@ -9,6 +9,7 @@
 
 **/DesktopBridge.FlightTracker.Package/win32/
 FlightTracker-AppX/
+**/DesktopBridge.FlightTracker/win32/
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
