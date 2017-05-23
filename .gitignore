@@ -7,6 +7,8 @@
 *.userosscache
 *.sln.docstates
 
+DesktopBridge.FlightTracker.Package/win32/
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
