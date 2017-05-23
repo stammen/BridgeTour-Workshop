@@ -12,14 +12,14 @@ namespace DesktopBridge.FlightTracker.Notification
             string flightInfo = GenerateFlightInfo();
 
             string xml = $@"<toast>
-<visual>
-    <binding template='ToastGeneric'>
-        <text>Flight Tracker</text>
-        <text>Pay attention, your time zone has changed! Make sure your flight is still in time!</text>
-        <text>{flightInfo}</text>
-    </binding>
-</visual>
-</toast>";
+                                <visual>
+                                    <binding template='ToastGeneric'>
+                                        <text>Flight Tracker</text>
+                                        <text>Pay attention, your time zone has changed! Make sure your flight is still in time!</text>
+                                        <text>{flightInfo}</text>
+                                    </binding>
+                                </visual>
+                            </toast>";
 
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(xml);
@@ -31,7 +31,6 @@ namespace DesktopBridge.FlightTracker.Notification
 
         private string GenerateFlightInfo()
         {
-            //we generate the message with the details of the flight from the data stored in the local storage
             string code = string.Empty;
             string date = string.Empty;
             string departure = string.Empty;

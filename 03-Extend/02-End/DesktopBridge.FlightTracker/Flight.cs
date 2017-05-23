@@ -14,6 +14,8 @@ namespace DesktopBridge.FlightTracker
 {
     public partial class Flight : Form
     {
+        private RegistryKey _regKey;
+
         public Flight()
         {
             InitializeComponent();
@@ -21,40 +23,50 @@ namespace DesktopBridge.FlightTracker
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            ApplicationData.Current.LocalSettings.Values["Code"] = codeTextbox.Text;
-            ApplicationData.Current.LocalSettings.Values["Date"] = dateTextbox.Text;
-            ApplicationData.Current.LocalSettings.Values["Departure"] = departureTextbox.Text;
-            ApplicationData.Current.LocalSettings.Values["Arrival"] = arrivalTextbox.Text;
-
-            operationStatusLabel.Text = "The flight has been saved";
-
+            DesktopBridge.Helpers bridgeHelpers = new DesktopBridge.Helpers();
+            if (bridgeHelpers.IsRunningAsUwp())
+            {
+                ApplicationData.Current.LocalSettings.Values["Code"] = codeTextbox.Text;
+                ApplicationData.Current.LocalSettings.Values["Date"] = dateTextbox.Text;
+                ApplicationData.Current.LocalSettings.Values["Departure"] = departureTextbox.Text;
+                ApplicationData.Current.LocalSettings.Values["Arrival"] = arrivalTextbox.Text;
+                operationStatusLabel.Text = "The flight has been saved";
+            }
+            else
+            {
+                _regKey.SetValue("Code", codeTextbox.Text);
+                _regKey.SetValue("Date", dateTextbox.Text);
+                _regKey.SetValue("Departure", departureTextbox.Text);
+                _regKey.SetValue("Arrival", arrivalTextbox.Text);
+                operationStatusLabel.Text = "The flight has been saved";
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            if (ApplicationData.Current.LocalSettings.Values.ContainsKey("Code"))
-            {
-                codeTextbox.Text = ApplicationData.Current.LocalSettings.Values["Code"].ToString();
-            }
-
-            if (ApplicationData.Current.LocalSettings.Values.ContainsKey("Date"))
-            {
-                dateTextbox.Text = ApplicationData.Current.LocalSettings.Values["Date"].ToString();
-            }
-
-            if (ApplicationData.Current.LocalSettings.Values.ContainsKey("Departure"))
-            {
-                departureTextbox.Text = ApplicationData.Current.LocalSettings.Values["Departure"].ToString();
-            }
-
-            if (ApplicationData.Current.LocalSettings.Values.ContainsKey("Arrival"))
-            {
-                arrivalTextbox.Text = ApplicationData.Current.LocalSettings.Values["Arrival"].ToString();
-            }
-
             DesktopBridge.Helpers bridgeHelpers = new DesktopBridge.Helpers();
             if (bridgeHelpers.IsRunningAsUwp())
             {
+                if (ApplicationData.Current.LocalSettings.Values.ContainsKey("Code"))
+                {
+                    codeTextbox.Text = ApplicationData.Current.LocalSettings.Values["Code"].ToString();
+                }
+
+                if (ApplicationData.Current.LocalSettings.Values.ContainsKey("Date"))
+                {
+                    dateTextbox.Text = ApplicationData.Current.LocalSettings.Values["Date"].ToString();
+                }
+
+                if (ApplicationData.Current.LocalSettings.Values.ContainsKey("Departure"))
+                {
+                    departureTextbox.Text = ApplicationData.Current.LocalSettings.Values["Departure"].ToString();
+                }
+
+                if (ApplicationData.Current.LocalSettings.Values.ContainsKey("Arrival"))
+                {
+                    arrivalTextbox.Text = ApplicationData.Current.LocalSettings.Values["Arrival"].ToString();
+                }
+
                 updateStripMenuItem.Visible = false;
                 string triggerName = "FlightTimeZoneTrigger";
 
@@ -73,7 +85,19 @@ namespace DesktopBridge.FlightTracker
                 builder.SetTrigger(new SystemTrigger(SystemTriggerType.TimeZoneChange, false));
                 builder.TaskEntryPoint = "DesktopBridge.FlightTracker.Notification.ToastTask";
                 builder.Register();
+            }
+            else
+            {
+                _regKey = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\DesktopBridgeWorkshop\Demo", true);
+                if (_regKey == null)
+                {
+                    _regKey = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\Microsoft\DesktopBridgeWorkshop\Demo", RegistryKeyPermissionCheck.ReadWriteSubTree);
+                }
 
+                codeTextbox.Text = (string)_regKey.GetValue("Code");
+                dateTextbox.Text = (string)_regKey.GetValue("Date");
+                departureTextbox.Text = (string)_regKey.GetValue("Departure");
+                arrivalTextbox.Text = (string)_regKey.GetValue("Arrival");
             }
         }
 
@@ -83,7 +107,7 @@ namespace DesktopBridge.FlightTracker
             progressBar.Visible = true;
 
             // Simulate a high load process
-            await Task.Delay(5 * 1000);
+            await Task.Delay(1000);
 
             string userPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
             string fileName = $"{userPath}\\BoardingPass.txt";
@@ -140,7 +164,6 @@ namespace DesktopBridge.FlightTracker
         {
             string title = "Flight Tracker";
             string message = "There are no updates available.";
-
             MessageBox.Show(message, title);
         }
     }
