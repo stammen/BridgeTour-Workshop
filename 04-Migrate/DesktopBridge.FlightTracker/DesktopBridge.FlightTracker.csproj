@@ -168,12 +168,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DesktopBridge.FlightTracker.Notification\DesktopBridge.FlightTracker.Notification.csproj">
-      <Project>{c98d5756-9d2b-4c4e-81e8-e3e0c5f35ca2}</Project>
-      <Name>DesktopBridge.FlightTracker.Notification</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <SDKReference Include="WindowsDesktop, Version=10.0.14393.0">
       <Name>Windows Desktop Extensions for the UWP</Name>
     </SDKReference>
@@ -182,6 +176,18 @@
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <ItemGroup>
+    <Content Include="win32\**\*.*">
+      <Link>win32\%(RecursiveDir)%(FileName)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DesktopBridge.FlightTracker.Notification\DesktopBridge.FlightTracker.Notification.csproj">
+      <Project>{424c0890-4bca-4a40-a3a1-d6efdf709d20}</Project>
+      <Name>DesktopBridge.FlightTracker.Notification</Name>
+    </ProjectReference>
+  </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

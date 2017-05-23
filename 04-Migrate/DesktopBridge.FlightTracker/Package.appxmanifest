@@ -29,7 +29,7 @@
             <Task Type="systemEvent" />
           </BackgroundTasks>
         </Extension>
-        <desktop:Extension Category="windows.fullTrustProcess" Executable="DesktopBridge.FlightTracker.Export.exe" />
+        <desktop:Extension Category="windows.fullTrustProcess" Executable="win32\DesktopBridge.FlightTracker.Export.exe" />
       </Extensions>
     </Application>
   </Applications>

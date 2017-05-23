@@ -59,8 +59,20 @@
     <None Include="App.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>xcopy /y /s "$(SolutionDir)DesktopBridge.FlightTracker.Export\bin\$(ConfigurationName)\DesktopBridge.FlightTracker.Export.exe" "$(SolutionDir)DesktopBridge.FlightTracker\bin\x64\$(ConfigurationName)\AppX\"
-xcopy /y /s "$(SolutionDir)DesktopBridge.FlightTracker.Export\bin\$(ConfigurationName)\DesktopBridge.FlightTracker.Export.exe" "$(SolutionDir)DesktopBridge.FlightTracker\bin\x86\$(ConfigurationName)\AppX\"</PostBuildEvent>
-  </PropertyGroup>
+  <Target Name="AfterBuild">
+    <PropertyGroup>
+      <TargetUWP>..\DesktopBridge.FlightTracker\win32\</TargetUWP>
+    </PropertyGroup>
+    <ItemGroup>
+      <DesktopBinaries Include="$(TargetDir)\**\*.*" />
+      <ExcludeFilters Include="$(TargetDir)\**\*.winmd" />
+    </ItemGroup>
+    <ItemGroup>
+      <DesktopBinaries Include="$(TargetDir)\**\*.*" />
+    </ItemGroup>
+    <ItemGroup>
+      <DesktopBinaries Remove="@(ExcludeFilters)" />
+    </ItemGroup>
+    <Copy SourceFiles="@(DesktopBinaries)" DestinationFiles="@(DesktopBinaries->'$(TargetUWP)\%(RecursiveDir)%(Filename)%(Extension)')" />
+  </Target>
 </Project>
