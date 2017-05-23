@@ -166,7 +166,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\DesktopBridge.FlightTracker.Notification\DesktopBridge.FlightTracker.Notification.csproj">
+    <ProjectReference Include="..\DesktopBridge.FlightTracker.Notification\DesktopBridge.FlightTracker.Notification.csproj">
       <Project>{7ad187f3-bd36-49dc-9619-50e178152ef5}</Project>
       <Name>DesktopBridge.FlightTracker.Notification</Name>
     </ProjectReference>

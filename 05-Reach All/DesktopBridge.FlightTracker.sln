@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopBridge.FlightTracker", "DesktopBridge.FlightTracker\DesktopBridge.FlightTracker.csproj", "{F9BEE676-386F-43FF-BC31-6368733839A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopBridge.FlightTracker.Notification", "..\DesktopBridge.FlightTracker.Notification\DesktopBridge.FlightTracker.Notification.csproj", "{7AD187F3-BD36-49DC-9619-50E178152EF5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopBridge.FlightTracker.Notification", "DesktopBridge.FlightTracker.Notification\DesktopBridge.FlightTracker.Notification.csproj", "{7AD187F3-BD36-49DC-9619-50E178152EF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
