@@ -12,7 +12,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DefineConstants>DEBUG</DefineConstants>
     <OutputPath>bin\x86\Debug\</OutputPath>
-    <PackageLayout>..\DesktopBridge.FlightTracker.Package\bin\x86\AppX</PackageLayout>
+    <PackageLayout>..\DesktopBridge.FlightTracker.Package\bin\x86\Debug\AppX</PackageLayout>
+    <StartupTile>DesktopBridge.FlightTracker</StartupTile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
@@ -29,6 +30,8 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DefineConstants>DEBUG</DefineConstants>
     <OutputPath>bin\AnyCPU\Debug\</OutputPath>
+    <PackageLayout>..\DesktopBridge.FlightTracker.Package\bin\Debug\AppX</PackageLayout>
+    <StartupTile>DesktopBridge.FlightTracker</StartupTile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <OutputPath>bin\AnyCPU\Release\</OutputPath>
